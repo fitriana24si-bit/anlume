@@ -11,15 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Anaanlume">
+
+        <!-- LOGIN (JADI HALAMAN PERTAMA) -->
         <activity
-            android:name=".pertemuan_2.MainActivity"
+            android:name=".pertemuan_3.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- WELCOME -->
+        <activity
+            android:name=".pertemuan_3.WelcomeActivity"
+            android:exported="true" />
+
+        <!-- MAIN ACTIVITY LAMA (TANPA LAUNCHER) -->
+        <activity
+            android:name=".pertemuan_2.MainActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

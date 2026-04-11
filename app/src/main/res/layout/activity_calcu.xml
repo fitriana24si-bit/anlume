@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient">
+
+    <!-- Judul -->
+    <TextView
+        android:id="@+id/tvJudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kalkulator Bangun"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Pilihan -->
+    <Spinner
+        android:id="@+id/spPilihan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Input 1 -->
+    <EditText
+        android:id="@+id/etInput1"
+        android:hint="Input 1"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Input 2 -->
+    <EditText
+        android:id="@+id/etInput2"
+        android:hint="Input 2"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Tombol Hitung -->
+    <Button
+        android:id="@+id/btnHitung"
+        android:text="Hitung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Hasil -->
+    <TextView
+        android:id="@+id/tvHasil"
+        android:text="Hasil:"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- Tombol Kembali -->
+    <Button
+        android:id="@+id/btnBack"
+        android:text="Kembali"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

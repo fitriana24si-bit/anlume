@@ -38,6 +38,14 @@
                 android:gravity="center"
                 android:textAlignment="center"/>
 
+            <!-- 🔥 BUTTON TAMBAHAN -->
+            <Button
+                android:id="@+id/btnLanjut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Masuk ke Menu"
+                android:layout_marginTop="24dp"/>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ana_anlume.R
 import com.example.ana_anlume.pertemuan_3.LoginActivity
+import com.example.ana_anlume.pertemuan_6.WebViewActivity
 import com.google.android.material.snackbar.Snackbar
 
 class DashboardActivity : AppCompatActivity() {
@@ -31,6 +32,12 @@ class DashboardActivity : AppCompatActivity() {
         val btn3 = findViewById<Button>(R.id.btn3)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         val btnBack = findViewById<Button>(R.id.btnBack)
+
+        // =========================
+        // 🔥 TAMBAHAN PERTEMUAN 6
+        // =========================
+        val btnWeb = findViewById<Button>(R.id.btnWeb)
+        // =========================
 
         val judul = "Halaman Utama"
         val deskripsi = "Ini adalah menu utama aplikasi"
@@ -59,13 +66,29 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Logout
+        // =========================
+        // 🌐 WEBVIEW BUTTON
+        // =========================
+        btnWeb.setOnClickListener {
+            startActivity(Intent(this, WebViewActivity::class.java))
+        }
+
+        // =========================
+        // 🔐 LOGOUT (DIPERBAIKI)
+        // =========================
         btnLogout.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Konfirmasi Logout")
             builder.setMessage("Apakah kamu yakin ingin logout?")
 
             builder.setPositiveButton("Ya") { _, _ ->
+
+                // ❗ HAPUS SESSION LOGIN
+                val pref = getSharedPreferences("LOGIN", MODE_PRIVATE)
+                val editor = pref.edit()
+                editor.clear()
+                editor.apply()
+
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -81,6 +104,7 @@ class DashboardActivity : AppCompatActivity() {
 
             builder.show()
         }
+
         btnBack.setOnClickListener {
             finish()
         }

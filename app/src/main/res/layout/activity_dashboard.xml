@@ -9,7 +9,6 @@
     android:background="@drawable/bg_gradient"
     tools:context=".pertemuan_4.DashboardActivity">
 
-
     <!-- Judul -->
     <TextView
         android:id="@+id/tvJudul"
@@ -39,54 +38,68 @@
         android:id="@+id/btn1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="Bangun Ruang"
         app:layout_constraintTop_toBottomOf="@id/tvDeskripsi"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Tombol 2 -->
     <Button
         android:id="@+id/btn2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
         android:text="Custom 1"
         app:layout_constraintTop_toBottomOf="@id/btn1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Tombol 3 -->
     <Button
         android:id="@+id/btn3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
         android:text="Custom 2"
         app:layout_constraintTop_toBottomOf="@id/btn2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Tombol Logout -->
+    <!-- 🌐 Tombol WebView (TAMBAHAN) -->
+    <Button
+        android:id="@+id/btnWeb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Buka Web Bina Desa"
+        app:layout_constraintTop_toBottomOf="@id/btn3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Logout -->
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="Logout"
-        app:layout_constraintTop_toBottomOf="@id/btn3"
+        app:layout_constraintTop_toBottomOf="@id/btnWeb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Tombol Back -->
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="136dp"
         android:text="Kembali"
+        app:layout_constraintTop_toBottomOf="@id/btnLogout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLogout" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

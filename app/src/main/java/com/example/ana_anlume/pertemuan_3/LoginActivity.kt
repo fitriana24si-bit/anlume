@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ana_anlume.databinding.ActivityLoginBinding
+import com.example.ana_anlume.pertemuan_4.DashboardActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,9 +21,25 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.etPassword.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
-                val intent = Intent(this, WelcomeActivity::class.java)
+
+                // =========================
+                // 🔥 TAMBAHAN PERTEMUAN 6
+                // =========================
+
+                val pref = getSharedPreferences("LOGIN", MODE_PRIVATE)
+                val editor = pref.edit()
+                editor.putBoolean("isLogin", true)
+                editor.apply()
+
+                // =========================
+                // 🔄 PINDAH HALAMAN
+                // =========================
+
+                val intent = Intent(this, DashboardActivity::class.java)
                 intent.putExtra("USERNAME", username)
                 startActivity(intent)
+                finish()
+
             } else {
                 binding.etUsername.error = "Isi username"
                 binding.etPassword.error = "Isi password"

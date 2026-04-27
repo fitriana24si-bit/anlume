@@ -6,11 +6,14 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.ana_anlume.R
 
 class WebViewActivity : AppCompatActivity() {
+
+    private lateinit var webView: WebView
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +31,9 @@ class WebViewActivity : AppCompatActivity() {
         // =========================
         // WEBVIEW
         // =========================
-        val webView = findViewById<WebView>(R.id.webView)
+        webView = findViewById(R.id.webView)
 
-        // Biar tidak buka browser luar
         webView.webViewClient = WebViewClient()
-
-        // Untuk handle JavaScript & UI web
         webView.webChromeClient = WebChromeClient()
 
         val settings: WebSettings = webView.settings
@@ -43,17 +43,34 @@ class WebViewActivity : AppCompatActivity() {
         settings.useWideViewPort = true
         settings.loadWithOverviewMode = true
 
-        // 🔥 Penting untuk beberapa website
+        // 🔥 biar kompatibel semua web
         settings.userAgentString =
             "Mozilla/5.0 (Linux; Android 10; Mobile) AppleWebKit/537.36 Chrome/90.0 Safari/537.36"
 
-        // 🔥 Load Web kamu
+        // 🔥 LOAD WEB
         webView.loadUrl("https://ana-sic.alwaysdata.net/")
+
+        // =========================
+        // 🔥 BACK HANDLER (VERSI BARU)
+        // =========================
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (webView.canGoBack()) {
+                    webView.goBack()
+                } else {
+                    finish()
+                }
+            }
+        })
     }
 
-    // Tombol back toolbar
+    // 🔥 BACK TOOLBAR (←)
     override fun onSupportNavigateUp(): Boolean {
-        finish()
+        if (webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            finish()
+        }
         return true
     }
 }

@@ -8,11 +8,7 @@
     android:background="@drawable/bg_gradient"
     tools:context=".pertemuan_6.SplashActivity">
 
-    <!-- LOGO / JUDUL -->
 
-    <!-- SUBTITLE -->
-
-    <!-- LOADING -->
     <TextView
         android:id="@+id/tvSub"
         android:layout_width="wrap_content"

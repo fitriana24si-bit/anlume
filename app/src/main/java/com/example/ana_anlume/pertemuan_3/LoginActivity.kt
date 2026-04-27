@@ -31,10 +31,6 @@ class LoginActivity : AppCompatActivity() {
                 editor.putBoolean("isLogin", true)
                 editor.apply()
 
-                // =========================
-                // 🔄 PINDAH HALAMAN
-                // =========================
-
                 val intent = Intent(this, DashboardActivity::class.java)
                 intent.putExtra("USERNAME", username)
                 startActivity(intent)

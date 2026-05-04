@@ -1,4 +1,4 @@
-package com.example.ana_anlume.pertemuan_2
+package com.example.ana_anlume.Home.pertemuan_2
 
 import kotlin.math.pow
 

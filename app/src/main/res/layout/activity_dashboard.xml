@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context=".pertemuan_4.DashboardActivity">
+    tools:context=".Home.pertemuan_4.DashboardActivity">
 
     <!-- Judul -->
     <TextView

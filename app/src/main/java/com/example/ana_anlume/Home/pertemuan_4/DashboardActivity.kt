@@ -1,4 +1,4 @@
-package com.example.ana_anlume.pertemuan_4
+package com.example.ana_anlume.Home.pertemuan_4
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ana_anlume.R
-import com.example.ana_anlume.pertemuan_3.LoginActivity
-import com.example.ana_anlume.pertemuan_6.WebViewActivity
+import com.example.ana_anlume.Home.pertemuan_3.LoginActivity
+import com.example.ana_anlume.Home.pertemuan_6.WebViewActivity
 import com.google.android.material.snackbar.Snackbar
 
 class DashboardActivity : AppCompatActivity() {

@@ -1,8 +1,9 @@
-package com.example.ana_anlume.pertemuan_3
+package com.example.ana_anlume.Home.pertemuan_3
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ana_anlume.Home.pertemuan_4.DashboardActivity
 import com.example.ana_anlume.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding.btnLanjut.setOnClickListener {
             val intent = Intent(
                 this,
-                com.example.ana_anlume.pertemuan_4.DashboardActivity::class.java
+                DashboardActivity::class.java
             )
             startActivity(intent)
             finish()

@@ -1,4 +1,4 @@
-package com.example.ana_anlume.pertemuan_6
+package com.example.ana_anlume.Home.pertemuan_6
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ana_anlume.BaseActivity
 import com.example.ana_anlume.R
-import com.example.ana_anlume.pertemuan_3.LoginActivity
-import com.example.ana_anlume.pertemuan_4.DashboardActivity
+import com.example.ana_anlume.Home.pertemuan_3.LoginActivity
+import com.example.ana_anlume.Home.pertemuan_4.DashboardActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +25,6 @@ class SplashActivity : AppCompatActivity() {
             insets
         }
 
-        // =========================
-        // 🔥 TAMBAHAN PERTEMUAN 6
-        // =========================
 
         val pref = getSharedPreferences("LOGIN", MODE_PRIVATE)
 
@@ -35,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
             val isLogin = pref.getBoolean("isLogin", false)
 
             if (isLogin) {
-                startActivity(Intent(this, DashboardActivity::class.java))
+                startActivity(Intent(this, BaseActivity::class.java))
             } else {
                 startActivity(Intent(this, LoginActivity::class.java))
             }

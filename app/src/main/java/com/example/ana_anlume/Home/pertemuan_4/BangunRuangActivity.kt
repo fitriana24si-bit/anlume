@@ -1,4 +1,4 @@
-package com.example.ana_anlume.pertemuan_4
+package com.example.ana_anlume.Home.pertemuan_4
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ana_anlume.Home.pertemuan_2.CalcuActivity
 import com.example.ana_anlume.R
 
 class BangunRuangActivity : AppCompatActivity() {
@@ -36,7 +37,7 @@ class BangunRuangActivity : AppCompatActivity() {
         btnHitung.setOnClickListener {
             val intent = Intent(
                 this,
-                com.example.ana_anlume.pertemuan_2.CalcuActivity::class.java
+                CalcuActivity::class.java
             )
             startActivity(intent)
         }

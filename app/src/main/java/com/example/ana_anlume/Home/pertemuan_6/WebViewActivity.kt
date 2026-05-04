@@ -1,4 +1,4 @@
-package com.example.ana_anlume.pertemuan_6
+package com.example.ana_anlume.Home.pertemuan_6
 
 import android.annotation.SuppressLint
 import android.os.Bundle

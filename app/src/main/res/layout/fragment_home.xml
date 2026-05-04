@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#673AB7"
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selamat Datang 👋"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aplikasi layanan digital desa"
+                android:textColor="#FDEDED"
+                android:textSize="14sp"
+                android:paddingTop="6dp"/>
+        </LinearLayout>
+
+        <!-- TITLE -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu Utama"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1F2937"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- BUTTON 1 -->
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Bangun Ruang"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+
+            android:layout_marginBottom="12dp"/>
+
+        <!-- BUTTON 2 -->
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Custom 1"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+
+            android:layout_marginBottom="12dp"/>
+
+        <!-- BUTTON 3 -->
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Custom 2"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+
+            android:layout_marginBottom="12dp"/>
+
+        <!-- WEBVIEW -->
+        <Button
+            android:id="@+id/btnWeb"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Website Desa"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+
+            android:layout_marginBottom="12dp"/>
+
+        <!-- LOGOUT -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

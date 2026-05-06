@@ -2,9 +2,10 @@ package com.example.ana_anlume.Home.pertemuan_3
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ana_anlume.BaseActivity
 import com.example.ana_anlume.databinding.ActivityLoginBinding
-import com.example.ana_anlume.Home.pertemuan_4.DashboardActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,25 +22,39 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.etPassword.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
+                val prefUser = getSharedPreferences("USER_DATA", MODE_PRIVATE)
+                val savedUsername = prefUser.getString("username", "")
+                val savedPassword = prefUser.getString("password", "")
 
-                // =========================
-                // 🔥 TAMBAHAN PERTEMUAN 6
-                // =========================
+                // Logic Login
+                val canLogin = (username == password) || (username == savedUsername && password == savedPassword)
 
-                val pref = getSharedPreferences("LOGIN", MODE_PRIVATE)
-                val editor = pref.edit()
-                editor.putBoolean("isLogin", true)
-                editor.apply()
+                if (canLogin) {
+                    // Simpan status login
+                    val prefLogin = getSharedPreferences("LOGIN", MODE_PRIVATE)
+                    val editor = prefLogin.edit()
+                    editor.putBoolean("isLogin", true)
+                    editor.apply()
 
-                val intent = Intent(this, DashboardActivity::class.java)
-                intent.putExtra("USERNAME", username)
-                startActivity(intent)
-                finish()
+                    // ✅ PERBAIKAN: Diarahkan ke BaseActivity agar Bottom Navigation & Fragment tampil
+                    // Sebelumnya diarahkan ke DashboardActivity, itu sebabnya menu bawah tidak muncul.
+                    val intent = Intent(this, BaseActivity::class.java)
+                    intent.putExtra("USERNAME", username)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Username atau Password salah", Toast.LENGTH_SHORT).show()
+                }
 
             } else {
-                binding.etUsername.error = "Isi username"
-                binding.etPassword.error = "Isi password"
+                if (username.isEmpty()) binding.etUsername.error = "Isi username"
+                if (password.isEmpty()) binding.etPassword.error = "Isi password"
             }
+        }
+
+        binding.tvRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }

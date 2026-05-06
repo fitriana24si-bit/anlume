@@ -20,8 +20,10 @@ class BaseActivity : AppCompatActivity() {
         binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // default fragment
-        replaceFragment(HomeFragment())
+        // ✅ PERBAIKAN: Hanya panggil fragment default jika savedInstanceState null
+        if (savedInstanceState == null) {
+            replaceFragment(HomeFragment())
+        }
 
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {

@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
         val btnWeb = view.findViewById<Button>(R.id.btnWeb)
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
 
-        val judul = "Halaman Utama"
+        val judul = "Halaman Utamaku"
         val deskripsi = "Ini adalah menu utama aplikasi"
 
         // 🔹 Tombol 1

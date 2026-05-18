@@ -11,8 +11,10 @@ import com.example.ana_anlume.Home.pertemuan_4.BangunRuangActivity
 import com.example.ana_anlume.Home.pertemuan_4.Custom1Activity
 import com.example.ana_anlume.Home.pertemuan_4.Custom2Activity
 import com.example.ana_anlume.Home.pertemuan_6.WebViewActivity
+import com.example.ana_anlume.Home.dokumen.DokumenActivity
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AlertDialog
+import com.example.ana_anlume.Home.pertemuan_9.NinthActivity
 
 class HomeFragment : Fragment() {
 
@@ -30,6 +32,9 @@ class HomeFragment : Fragment() {
         val btn3 = view.findViewById<Button>(R.id.btn3)
         val btnWeb = view.findViewById<Button>(R.id.btnWeb)
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
+
+        // 🔥 TAMBAHAN BUTTON DOKUMEN
+        val btnDokumen = view.findViewById<Button>(R.id.btnDokumen)
 
         val judul = "Halaman Utamaku"
         val deskripsi = "Ini adalah menu utama aplikasi"
@@ -61,6 +66,13 @@ class HomeFragment : Fragment() {
         // 🔹 WebView
         btnWeb.setOnClickListener {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
+        }
+
+        // 🔥 TAMBAHAN MENU DOKUMEN PUBLIK
+        btnDokumen.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), NinthActivity::class.java)
+            )
         }
 
         // 🔹 Logout

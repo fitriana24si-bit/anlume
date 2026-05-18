@@ -158,12 +158,15 @@
 
             <!-- DAFTAR -->
             <TextView
+                android:id="@+id/tvRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Belum punya akun? Daftar sekarang"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
-                android:textColor="@color/textPrimary"/>
+                android:textColor="@color/textPrimary"
+                android:clickable="true"
+                android:focusable="true"/>
 
         </LinearLayout>
 

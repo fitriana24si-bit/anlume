@@ -37,6 +37,9 @@
             android:name=".Home.pertemuan_3.LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".Home.pertemuan_3.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".Home.pertemuan_3.WelcomeActivity"
             android:exported="false" />
         <activity

@@ -94,12 +94,23 @@
             android:backgroundTint="#673AB7"
             android:layout_marginBottom="12dp"/>
 
-        <!-- 🔥 TAMBAHAN BUTTON DOKUMEN PUBLIK -->
+        <!-- MENU PERTEMUAN 9 -->
         <Button
             android:id="@+id/btnDokumen"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="Dokumen Publik"
+            android:text="Dokumen Publik "
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#673AB7"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- 🔥 MENU PERTEMUAN 10 -->
+        <Button
+            android:id="@+id/btnTenth"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Bina Desaku "
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:backgroundTint="#673AB7"

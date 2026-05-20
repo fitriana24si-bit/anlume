@@ -16,6 +16,11 @@
         android:theme="@style/Theme.Anaanlume"
         android:usesCleartextTraffic="true">
 
+        <!-- 🔥 TAMBAHAN PERTEMUAN 10 -->
+        <activity
+            android:name=".Home.pertemuan_10.TenthActivity"
+            android:exported="false" />
+
         <!-- 🔥 TAMBAHAN PERTEMUAN 9 -->
         <activity
             android:name=".Home.pertemuan_9.NinthActivity"

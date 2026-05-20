@@ -11,10 +11,10 @@ import com.example.ana_anlume.Home.pertemuan_4.BangunRuangActivity
 import com.example.ana_anlume.Home.pertemuan_4.Custom1Activity
 import com.example.ana_anlume.Home.pertemuan_4.Custom2Activity
 import com.example.ana_anlume.Home.pertemuan_6.WebViewActivity
-import com.example.ana_anlume.Home.dokumen.DokumenActivity
+import com.example.ana_anlume.Home.pertemuan_9.NinthActivity
+import com.example.ana_anlume.Home.pertemuan_10.TenthActivity
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AlertDialog
-import com.example.ana_anlume.Home.pertemuan_9.NinthActivity
 
 class HomeFragment : Fragment() {
 
@@ -32,9 +32,10 @@ class HomeFragment : Fragment() {
         val btn3 = view.findViewById<Button>(R.id.btn3)
         val btnWeb = view.findViewById<Button>(R.id.btnWeb)
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
-
-        // 🔥 TAMBAHAN BUTTON DOKUMEN
         val btnDokumen = view.findViewById<Button>(R.id.btnDokumen)
+        
+        // 🔥 TAMBAHAN BUTTON TENTH (P10)
+        val btnTenth = view.findViewById<Button>(R.id.btnTenth)
 
         val judul = "Halaman Utamaku"
         val deskripsi = "Ini adalah menu utama aplikasi"
@@ -68,11 +69,14 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
 
-        // 🔥 TAMBAHAN MENU DOKUMEN PUBLIK
+        // 🔹 Pertemuan 9
         btnDokumen.setOnClickListener {
-            startActivity(
-                Intent(requireContext(), NinthActivity::class.java)
-            )
+            startActivity(Intent(requireContext(), NinthActivity::class.java))
+        }
+
+        // 🔥 TAMBAHAN PERTEMUAN 10
+        btnTenth.setOnClickListener {
+            startActivity(Intent(requireContext(), TenthActivity::class.java))
         }
 
         // 🔹 Logout
@@ -82,10 +86,8 @@ class HomeFragment : Fragment() {
             builder.setMessage("Apakah kamu yakin ingin logout?")
 
             builder.setPositiveButton("Ya") { _, _ ->
-
                 val pref = requireActivity().getSharedPreferences("LOGIN", 0)
                 pref.edit().clear().apply()
-
                 startActivity(Intent(requireContext(), LoginActivity::class.java))
                 requireActivity().finish()
             }

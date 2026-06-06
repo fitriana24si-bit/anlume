@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.ana_anlume.BaseActivity
 import com.example.ana_anlume.R
 import com.example.ana_anlume.Home.pertemuan_3.LoginActivity
-import com.example.ana_anlume.Home.pertemuan_4.DashboardActivity
+import com.example.ana_anlume.onboarding.OnBoardingActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,21 +25,25 @@ class SplashActivity : AppCompatActivity() {
             insets
         }
 
-
-        val pref = getSharedPreferences("LOGIN", MODE_PRIVATE)
+        val prefLogin = getSharedPreferences("LOGIN", MODE_PRIVATE)
+        val prefOnboarding = getSharedPreferences("ONBOARDING", MODE_PRIVATE)
 
         Handler(Looper.getMainLooper()).postDelayed({
+            val isFinishedOnboarding = prefOnboarding.getBoolean("FINISHED", false)
+            val isLogin = prefLogin.getBoolean("isLogin", false)
 
-            val isLogin = pref.getBoolean("isLogin", false)
-
-            if (isLogin) {
-                startActivity(Intent(this, BaseActivity::class.java))
-            } else {
-                startActivity(Intent(this, LoginActivity::class.java))
+            when {
+                !isFinishedOnboarding -> {
+                    startActivity(Intent(this, OnBoardingActivity::class.java))
+                }
+                isLogin -> {
+                    startActivity(Intent(this, BaseActivity::class.java))
+                }
+                else -> {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
             }
-
             finish()
-
         }, 2000)
     }
 }

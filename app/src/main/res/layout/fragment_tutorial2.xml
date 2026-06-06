@@ -38,17 +38,15 @@
             android:layout_height="240dp"
             android:layout_marginBottom="40dp"
             app:cardCornerRadius="120dp"
-            app:cardElevation="12dp"
-            app:cardMaxElevation="15dp"
-            app:cardPreventCornerOverlap="false">
+            app:cardElevation="12dp">
 
             <ImageView
                 android:id="@+id/ivTutorial2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="40dp"
+                android:padding="45dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/bg_header_wave" />
+                android:src="@drawable/akses" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -72,6 +70,32 @@
             android:textAlignment="center"
             android:textColor="#4B5563"
             android:textSize="17sp" />
+
+        <!-- Dots Indicator (2nd Dot Selected) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/tab_indicator_default" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/tab_indicator_selected" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/tab_indicator_default" />
+        </LinearLayout>
 
     </LinearLayout>
 

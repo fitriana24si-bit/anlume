@@ -41,14 +41,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // --- SLIDER FOTO (Menggunakan drawable yang tersedia) ---
+        // --- SLIDER FOTO DESA (Menggunakan URL Gambar Suasana Desa) ---
         val vpSlider = view.findViewById<ViewPager2>(R.id.vpSlider)
-        val listFoto = listOf(
-            R.drawable.gb_desa,
-            R.drawable.bg_header_dokumen,
-            R.drawable.bg_header_wave
+        val listFotoUrl = listOf(
+            "https://loremflickr.com/800/400/village,nature?lock=10",
+            "https://loremflickr.com/800/400/village,nature?lock=20",
+            "https://loremflickr.com/800/400/village,nature?lock=30"
         )
-        val photoAdapter = PhotoAdapter(listFoto)
+        val photoAdapter = PhotoAdapter(listFotoUrl)
         vpSlider.adapter = photoAdapter
 
         // --- LIST BERITA ---
@@ -59,7 +59,11 @@ class HomeFragment : Fragment() {
 
         fetchBerita()
 
-        // --- MENU UTAMA ---
+        // --- MENU UTAMA & ACTIONS ---
+        setupActions(view)
+    }
+
+    private fun setupActions(view: View) {
         val btn1 = view.findViewById<Button>(R.id.btn1)
         val btn2 = view.findViewById<Button>(R.id.btn2)
         val btn3 = view.findViewById<Button>(R.id.btn3)
@@ -67,27 +71,27 @@ class HomeFragment : Fragment() {
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
         val btnDokumen = view.findViewById<Button>(R.id.btnDokumen)
 
-        btn1.setOnClickListener {
+        btn1?.setOnClickListener {
             startActivity(Intent(requireContext(), BangunRuangActivity::class.java))
         }
 
-        btn2.setOnClickListener {
+        btn2?.setOnClickListener {
             startActivity(Intent(requireContext(), Custom1Activity::class.java))
         }
 
-        btn3.setOnClickListener {
+        btn3?.setOnClickListener {
             startActivity(Intent(requireContext(), Custom2Activity::class.java))
         }
 
-        btnWeb.setOnClickListener {
+        btnWeb?.setOnClickListener {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
 
-        btnDokumen.setOnClickListener {
+        btnDokumen?.setOnClickListener {
             startActivity(Intent(requireContext(), NinthActivity::class.java))
         }
 
-        btnLogout.setOnClickListener {
+        btnLogout?.setOnClickListener {
             AlertDialog.Builder(requireContext())
                 .setTitle("Konfirmasi Logout")
                 .setMessage("Apakah kamu yakin ingin logout?")
@@ -106,19 +110,16 @@ class HomeFragment : Fragment() {
         PostApiClient.instance.getPosts().enqueue(object : Callback<List<PostModel>> {
             override fun onResponse(call: Call<List<PostModel>>, response: Response<List<PostModel>>) {
                 if (response.isSuccessful) {
-                    val posts = response.body()
-                    if (posts != null) {
+                    response.body()?.let {
                         listPost.clear()
-                        listPost.addAll(posts.take(10))
+                        listPost.addAll(it.take(10))
                         postAdapter.notifyDataSetChanged()
                     }
-                } else {
-                    Toast.makeText(requireContext(), "Gagal mengambil data berita", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
-                Toast.makeText(requireContext(), "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Gagal memuat berita: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

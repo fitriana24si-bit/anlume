@@ -1,152 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F7FA">
 
-    <LinearLayout
+    <!-- Konten yang bisa di-scroll (Berita & Menu) -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/contentScroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- HEADER -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_header_wave"
-            android:gravity="center_vertical"
             android:orientation="vertical"
-            android:padding="20dp"
-            android:layout_marginBottom="20dp">
+            android:padding="20dp">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_header_wave"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selamat Datang 👋"
+                    android:textColor="#673AB7"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dp"
+                    android:text="Aplikasi layanan digital desa"
+                    android:textColor="#673AB7"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <!-- SLIDER FOTO -->
+
+            <!-- MENU UTAMA HORIZONTAL -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpSlider"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginBottom="24dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Selamat Datang 👋"
-                android:textColor="#673AB7"
-                android:textSize="22sp"
+                android:layout_marginBottom="12dp"
+                android:text="Menu Utama"
+                android:textColor="#1F2937"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <HorizontalScrollView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="6dp"
-                android:text="Aplikasi layanan digital desa"
-                android:textColor="#673AB7"
-                android:textSize="14sp" />
+                android:scrollbars="none"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="#673AB7"
+                        android:text="Bangun Ruang"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/btn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="#673AB7"
+                        android:text="Custom 1"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/btn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="#673AB7"
+                        android:text="Custom 2"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/btnWeb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="#673AB7"
+                        android:text="Website"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/btnDokumen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:backgroundTint="#673AB7"
+                        android:text="Dokumen"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- BERITA SECTION -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Berita &amp; Regulasi Terbaru"
+                android:textColor="#1F2937"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBerita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        <!-- SLIDER FOTO DESA -->
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vpSlider"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="20dp" />
+    <!-- TOMBOL LOGOUT (Fixed di bawah) -->
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="#EF4444"
+        android:text="Logout"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- TITLE MENU -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:text="Menu Utama"
-            android:textColor="#1F2937"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <!-- HORIZONTAL MENU BUTTONS -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:layout_marginBottom="24dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_marginEnd="12dp"
-                    android:backgroundTint="#673AB7"
-                    android:text="Bangun Ruang"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF" />
-
-                <Button
-                    android:id="@+id/btn2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_marginEnd="12dp"
-                    android:backgroundTint="#673AB7"
-                    android:text="Custom 1"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF" />
-
-                <Button
-                    android:id="@+id/btn3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_marginEnd="12dp"
-                    android:backgroundTint="#673AB7"
-                    android:text="Custom 2"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF" />
-
-                <Button
-                    android:id="@+id/btnWeb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_marginEnd="12dp"
-                    android:backgroundTint="#673AB7"
-                    android:text="Website Desa"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF" />
-
-                <Button
-                    android:id="@+id/btnDokumen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:backgroundTint="#673AB7"
-                    android:text="Dokumen"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF" />
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <!-- BERITA SECTION -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:text="Berita &amp; Regulasi Terbaru"
-            android:textColor="#1F2937"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBerita"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-        <!-- LOGOUT -->
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#EF4444"
-            android:text="Logout"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
-
-    </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

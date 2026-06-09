@@ -7,12 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.ana_anlume.Data.Model.PostModel
 import com.example.ana_anlume.R
 
 class PostAdapter(private val posts: List<PostModel>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
-    // Judul berita dalam Bahasa Indonesia sesuai tema Bina Desaku
     private val judulIndo = listOf(
         "Pedoman Baru Pengelolaan Dana Desa 2024",
         "Penyusunan Rencana Kerja Pembangunan Desa",
@@ -40,18 +40,18 @@ class PostAdapter(private val posts: List<PostModel>) : RecyclerView.Adapter<Pos
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts[position]
         
-        // Memetakan judul ke Bahasa Indonesia
         val displayTitle = if (position < judulIndo.size) judulIndo[position] else "Informasi Desa: ${post.title.take(20)}..."
-        val displayBody = "Pemerintah Desa merilis regulasi terkait ${displayTitle.lowercase()}. Hal ini bertujuan untuk meningkatkan transparansi dan kesejahteraan masyarakat di wilayah Bina Desaku."
+        val displayBody = "Pemerintah Desa merilis regulasi terkait ${displayTitle.lowercase()}. Hal ini bertujuan untuk meningkatkan transparansi dan kesejahteraan masyarakat."
 
         holder.tvTitle.text = displayTitle
         holder.tvBody.text = displayBody
 
-        // Mengambil foto bertema desa/nature dari internet (Glide)
+        // Gunakan Picsum Photos agar lebih stabil + Transition agar smooth
         Glide.with(holder.itemView.context)
-            .load("https://loremflickr.com/320/240/village,nature,farm?lock=$position")
-            .placeholder(R.drawable.desa)
-            .error(R.drawable.bg_header_dokumen)
+            .load("https://picsum.photos/seed/${post.id}/400/300")
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .placeholder(R.drawable.desa) // Pastikan drawable ini ada dan bukan kotak ungu
+            .error(android.R.drawable.ic_menu_report_image) // Gambar error default android jika gagal
             .into(holder.ivNews)
     }
 

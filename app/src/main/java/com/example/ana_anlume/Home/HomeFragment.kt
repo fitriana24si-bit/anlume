@@ -41,12 +41,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // --- SLIDER FOTO DESA (Menggunakan URL Gambar Suasana Desa) ---
+        // --- SLIDER FOTO (URL Baru yang lebih stabil) ---
         val vpSlider = view.findViewById<ViewPager2>(R.id.vpSlider)
         val listFotoUrl = listOf(
-            "https://loremflickr.com/800/400/village,nature?lock=10",
-            "https://loremflickr.com/800/400/village,nature?lock=20",
-            "https://loremflickr.com/800/400/village,nature?lock=30"
+            "https://picsum.photos/id/10/800/400",
+            "https://picsum.photos/id/13/800/400",
+            "https://picsum.photos/id/17/800/400"
         )
         val photoAdapter = PhotoAdapter(listFotoUrl)
         vpSlider.adapter = photoAdapter
@@ -59,7 +59,6 @@ class HomeFragment : Fragment() {
 
         fetchBerita()
 
-        // --- MENU UTAMA & ACTIONS ---
         setupActions(view)
     }
 
@@ -119,7 +118,9 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
-                Toast.makeText(requireContext(), "Gagal memuat berita: ${t.message}", Toast.LENGTH_SHORT).show()
+                if (isAdded) {
+                    Toast.makeText(requireContext(), "Gagal memuat berita: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }

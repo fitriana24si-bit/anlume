@@ -1,13 +1,12 @@
 package com.example.ana_anlume
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.ana_anlume.About.AboutFragment
 import com.example.ana_anlume.Home.HomeFragment
-import com.example.ana_anlume.Home.agenda.AgendaDesaActivity // Impor Activity yang kita buat tadi
+import com.example.ana_anlume.Home.agenda.AgendaDesaFragment // Impor Fragment-nya, bukan Activity-nya
 import com.example.ana_anlume.Home.dokumen.DokumenPublikFragment
 import com.example.ana_anlume.Profile.ProfileFragment
 import com.example.ana_anlume.databinding.ActivityBaseBinding
@@ -23,7 +22,6 @@ class BaseActivity : AppCompatActivity() {
         binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set fragment default saat pertama kali aplikasi dibuka
         if (savedInstanceState == null) {
             replaceFragment(HomeFragment())
         }
@@ -36,9 +34,8 @@ class BaseActivity : AppCompatActivity() {
                 }
 
                 R.id.produk -> {
-                    // Karena AgendaDesa adalah Activity, kita buka menggunakan Intent
-                    val intent = Intent(this, AgendaDesaActivity::class.java)
-                    startActivity(intent)
+                    // FIX: Sekarang panggil Fragment agar Bottom Nav tidak hilang!
+                    replaceFragment(AgendaDesaFragment())
                     true
                 }
 

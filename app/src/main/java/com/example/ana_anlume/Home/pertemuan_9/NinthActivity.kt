@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.ana_anlume.Home.dokumen.DokumenActivity
+import com.example.ana_anlume.Home.pertemuan_4.DashboardActivity // Pastikan import ini ada
 import com.example.ana_anlume.R
 
 class NinthActivity : AppCompatActivity() {
@@ -30,20 +30,19 @@ class NinthActivity : AppCompatActivity() {
             insets
         }
 
-        // =========================
-        // BUTTON MASUK KE DOKUMEN
-        // =========================
-
+        // ==========================================
+        // BUTTON MASUK KE HALAMAN UTAMA (DASHBOARD)
+        // ==========================================
         val btnMasukDokumen = findViewById<Button>(R.id.btnMasukDokumen)
 
         btnMasukDokumen.setOnClickListener {
-
-            startActivity(
-                Intent(
-                    this,
-                    DokumenActivity::class.java
-                )
-            )
+            // DIUBAH: Mengarah ke DashboardActivity, bukan DokumenActivity lagi
+            val intent = Intent(this, DashboardActivity::class.java).apply {
+                // Mengirim tanda (flag/extra) untuk memberi tahu Dashboard agar langsung membuka tab Dokumen
+                putExtra("BUKA_TAB_DOKUMEN", true)
+            }
+            startActivity(intent)
+            finish() // Menutup NinthActivity agar tidak menumpuk backstack
         }
     }
 }

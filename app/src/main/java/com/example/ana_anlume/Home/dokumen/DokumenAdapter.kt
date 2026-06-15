@@ -1,42 +1,63 @@
 package com.example.ana_anlume.Home.dokumen
 
-import android.app.Activity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.TextView
-import com.example.ana_anlume.R
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ana_anlume.databinding.ItemDokumenPublikBinding
 
 class DokumenAdapter(
-    private val context: Activity,
-    private val listDokumen: ArrayList<DokumenModel>
-) : ArrayAdapter<DokumenModel>(context, R.layout.item_dokumen, listDokumen) {
+    private var listDokumen: List<DokumenEntity>,
+    private val onDeleteClick: (DokumenEntity) -> Unit,
+    private val onEditClick: (DokumenEntity) -> Unit // Ditambahkan callback edit
+) : RecyclerView.Adapter<DokumenAdapter.ViewHolder>() {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+    inner class ViewHolder(
+        private val binding: ItemDokumenPublikBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-        val inflater = LayoutInflater.from(context)
+        fun bind(dokumen: DokumenEntity) {
+            binding.tvNamaDokumen.text = dokumen.namaDokumen
+            binding.tvJenisDokumen.text = dokumen.jenisDokumen
+            binding.tvDeskripsi.text = dokumen.deskripsi
+            binding.tvTanggalUpload.text = dokumen.tanggalUpload
 
-        val view = convertView ?: inflater.inflate(
-            R.layout.item_dokumen,
+            // Aksi tombol Hapus
+            binding.btnDelete.setOnClickListener {
+                onDeleteClick(dokumen)
+            }
+
+            // Aksi tombol Edit
+            binding.btnEdit.setOnClickListener {
+                onEditClick(dokumen)
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val binding = ItemDokumenPublikBinding.inflate(
+            LayoutInflater.from(parent.context),
             parent,
             false
         )
+        return ViewHolder(binding)
+    }
 
-        // COMPONENT
-        val imgIcon = view.findViewById<ImageView>(R.id.imgIcon)
-        val txtJudul = view.findViewById<TextView>(R.id.txtJudul)
-        val txtDeskripsi = view.findViewById<TextView>(R.id.txtDeskripsi)
+    override fun onBindViewHolder(
+        holder: ViewHolder,
+        position: Int
+    ) {
+        holder.bind(listDokumen[position])
+    }
 
-        // DATA
-        val dokumen = listDokumen[position]
+    override fun getItemCount(): Int {
+        return listDokumen.size
+    }
 
-        txtJudul.text = dokumen.judul
-        txtDeskripsi.text = dokumen.deskripsi
-
-        imgIcon.setImageResource(R.drawable.ic_launcher_foreground)
-
-        return view
+    fun updateData(newList: List<DokumenEntity>) {
+        listDokumen = newList
+        notifyDataSetChanged()
     }
 }

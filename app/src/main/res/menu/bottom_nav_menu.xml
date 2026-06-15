@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
         android:id="@+id/home"
         android:icon="@drawable/home"
         android:title="Home"/>
 
+    <item
+        android:id="@+id/produk"
+        android:icon="@drawable/akses"
+        android:title="Agenda"/>
+
+    <item
+        android:id="@+id/dokumen"
+        android:icon="@drawable/update"
+        android:title="Dokumen"/>
 
     <item
         android:id="@+id/about"
         android:icon="@drawable/about"
         android:title="About"/>
 
-
     <item
         android:id="@+id/profile"
         android:icon="@drawable/profile"
         android:title="Profile"/>
-
 
 </menu>

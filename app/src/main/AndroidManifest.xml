@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- ✅ WAJIB untuk WebView -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,79 +15,32 @@
         android:theme="@style/Theme.Anaanlume"
         android:usesCleartextTraffic="true">
 
-        <!-- ONBOARDING -->
         <activity
-            android:name=".onboarding.OnBoardingActivity"
+            android:name=".Home.agenda.AgendaDesaActivity"
             android:exported="false" />
 
-        <!-- 🔥 TAMBAHAN PERTEMUAN 9 -->
-        <activity
-            android:name=".Home.pertemuan_9.NinthActivity"
-            android:exported="false" />
+        <activity android:name=".onboarding.OnBoardingActivity" android:exported="false" />
+        <activity android:name=".BaseActivity" android:exported="false" />
 
-        <!-- 🔥 TAMBAHAN DOKUMEN PUBLIK -->
-        <activity
-            android:name=".Home.dokumen.DokumenActivity"
-            android:exported="false" />
-
-        <!-- BASE -->
-        <activity
-            android:name=".BaseActivity"
-            android:exported="false" />
-
-        <!-- WEBVIEW -->
-        <activity
-            android:name=".Home.pertemuan_6.WebViewActivity"
-            android:exported="false" />
-
-        <!-- SPLASH -->
-        <activity
-            android:name=".Home.pertemuan_6.SplashActivity"
-            android:exported="true">
+        <activity android:name=".Home.pertemuan_6.WebViewActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_6.SplashActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- LAINNYA -->
-        <activity
-            android:name=".Home.pertemuan_4.DashboardActivity"
-            android:exported="false" />
+        <activity android:name=".Home.pertemuan_4.DashboardActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_3.LoginActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_3.RegisterActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_3.WelcomeActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_4.BangunRuangActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_4.Custom1Activity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_4.Custom2Activity" android:exported="false" />
 
-        <activity
-            android:name=".Home.pertemuan_3.LoginActivity"
-            android:exported="false" />
-
-        <!-- 🔥 TAMBAHAN REGISTER -->
-        <activity
-            android:name=".Home.pertemuan_3.RegisterActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_3.WelcomeActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_4.BangunRuangActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_4.Custom1Activity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_4.Custom2Activity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_2.CalcuActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".pertemuan_2.MainActivity"
-            android:exported="false" />
+        <activity android:name=".Home.pertemuan_2.CalcuActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_9.NinthActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_10.TenthActivity" android:exported="false" />
 
     </application>
-
 </manifest>

@@ -21,14 +21,12 @@
         android:id="@+id/bottomNavView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:background="#FFFFFF"
         android:elevation="8dp"
-
         app:itemIconTint="#6C63FF"
         app:itemTextColor="#6C63FF"
         app:itemRippleColor="#D1D5FF"
-
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

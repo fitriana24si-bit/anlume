@@ -12,15 +12,15 @@ import com.example.ana_anlume.Home.agenda.AgendaDesaEntity
 @Database(
     entities = [
         DokumenEntity::class,
-        AgendaDesaEntity::class // Menambahkan entitas Agenda Desa
+        AgendaDesaEntity::class
     ],
-    version = 2, // Versi dinaikkan menjadi 2 karena ada penambahan tabel baru
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun dokumenDao(): DokumenDao
-    abstract fun agendaDesaDao(): AgendaDesaDao // Menambahkan abstract function untuk DAO Agenda Desa
+    abstract fun agendaDesaDao(): AgendaDesaDao
 
     companion object {
 

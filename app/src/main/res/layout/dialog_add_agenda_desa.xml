@@ -24,95 +24,135 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Form Kegiatan"
-                android:textSize="22sp"
+                android:text="Form Kegiatan Desa"
                 android:textStyle="bold"
-                android:textColor="#212121"
-                android:layout_marginBottom="4dp"/>
+                android:textSize="22sp"
+                android:textColor="#212121"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Silakan isi detail data kegiatan di bawah ini."
-                android:textSize="13sp"
+                android:text="Silakan isi data kegiatan berikut."
                 android:textColor="#757575"
+                android:textSize="13sp"
                 android:layout_marginBottom="20dp"/>
 
+            <!-- Nama Kegiatan -->
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
                 android:hint="Nama Kegiatan"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginBottom="14dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etNamaKegiatan"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapSentences"
-                    android:textColor="#212121" />
+                    android:layout_height="wrap_content"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Lokasi -->
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
                 android:hint="Lokasi"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginBottom="14dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etLokasi"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapSentences"
-                    android:textColor="#212121" />
+                    android:layout_height="wrap_content"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Tanggal -->
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
                 android:hint="Tanggal Kegiatan"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="14dp"
                 app:startIconDrawable="@android:drawable/ic_menu_my_calendar">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etTanggalKegiatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false"
-                    android:clickable="true"
-                    android:longClickable="false"
-                    android:textColor="#212121" />
+                    android:clickable="true"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Jam -->
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Jam Kegiatan"
+                android:layout_marginBottom="14dp"
+                app:startIconDrawable="@android:drawable/ic_lock_idle_alarm">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etJamKegiatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Reminder (Spinner) -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pengingat (menit sebelum kegiatan)"
+                android:textColor="#757575"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerReminder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
+                android:background="@android:drawable/editbox_background"
+                android:padding="12dp"/>
+
+            <!-- Penanggung Jawab -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Penanggung Jawab"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginBottom="14dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPenanggungJawab"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:textColor="#212121" />
+                    android:layout_height="wrap_content"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Deskripsi -->
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
                 android:hint="Deskripsi"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginBottom="24dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDeskripsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
                     android:minLines="3"
-                    android:gravity="top"
-                    android:textColor="#212121" />
+                    android:gravity="top"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Tombol -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,25 +165,22 @@
                     android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="Batal"
-                    android:textColor="#757575"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:text="Batal"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSimpan"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
                     android:text="Simpan"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:backgroundTint="#D32F2F" app:cornerRadius="12dp" />
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="#D32F2F"
+                    app:cornerRadius="12dp"/>
+
             </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
+
 </com.google.android.material.card.MaterialCardView>

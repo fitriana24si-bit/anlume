@@ -16,6 +16,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // ✅ Tambahkan ini untuk menghindari error CoreComponentFactory
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -43,8 +46,17 @@ android {
 }
 
 dependencies {
-    // UI & Layout
+    // ✅ Pastikan core-ktx menggunakan versi terbaru (ditulis eksplisit)
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.activity:activity:1.9.0")
+
+    // ✅ Tambahkan multidex (jika diperlukan)
+    implementation("androidx.multidex:multidex:2.0.1")
+
+    // UI & Layout
     implementation("androidx.gridlayout:gridlayout:1.1.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.cardview:cardview:1.0.0")
@@ -55,13 +67,6 @@ dependencies {
     // Glide (Image Loading)
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
-
-    // AndroidX Core & Common
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
 
     // Retrofit & Gson Network
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

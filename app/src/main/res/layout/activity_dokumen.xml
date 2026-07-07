@@ -10,9 +10,10 @@
     tools:context=".Home.dokumen.DokumenActivity">
 
     <!-- SCROLL -->
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp"
+                android:padding="24dp"
                 android:background="@drawable/bg_header_dokumen"
                 android:layout_marginBottom="16dp">
 
@@ -33,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dokumen Publik"
-                    android:textSize="24sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     android:textColor="#FFFFFF"/>
 
@@ -52,17 +53,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Cari dokumen..."
-                app:boxBackgroundMode="filled"
+                app:startIconDrawable="@android:drawable/ic_menu_search"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:boxCornerRadiusTopStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusBottomEnd="16dp"
                 app:boxBackgroundColor="#FFFFFF"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                app:elevation="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- CHIP GROUP -->
@@ -74,89 +79,74 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipSemua"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Semua"
-                    android:textColor="#FFFFFF"
                     android:checked="true"
-                    app:chipBackgroundColor="#6C63FF"/>
+                    app:chipBackgroundColor="@color/purple_500"
+                    android:textColor="@android:color/white"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipPemerintah"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pemerintah"
-                    android:textColor="#6C63FF"
-                    app:chipBackgroundColor="#EDE9FE"/>
+                    android:text="Pemerintah" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipLayanan"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Layanan"
-                    android:textColor="#6C63FF"
-                    app:chipBackgroundColor="#EDE9FE"/>
+                    android:text="Layanan" />
 
             </com.google.android.material.chip.ChipGroup>
 
-            <!-- GRID LAYOUT -->
+            <!-- MENU UTAMA MENGGUNAKAN MATERIAL BUTTON -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
                 android:layout_marginBottom="18dp">
 
-                <!-- CARD 1 -->
-                <LinearLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAdministrasi"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:layout_columnWeight="1"
                     android:layout_margin="6dp"
-                    android:background="@drawable/bg_menu_card"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="12dp">
+                    android:text="Administrasi"
+                    android:textAllCaps="false"
+                    android:textColor="#1F2937"
+                    app:icon="@android:drawable/ic_menu_edit"
+                    app:iconGravity="top"
+                    app:iconPadding="8dp"
+                    app:iconSize="32dp"
+                    app:iconTint="#673AB7"
+                    app:cornerRadius="16dp"
+                    app:strokeColor="#E5E7EB"
+                    android:backgroundTint="#FFFFFF"/>
 
-                    <!-- ICON ADMINISTRASI -->
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:src="@android:drawable/ic_menu_edit"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Administrasi"
-                        android:textStyle="bold"
-                        android:textColor="#1F2937"
-                        android:paddingTop="8dp"/>
-                </LinearLayout>
-
-                <!-- CARD 2 -->
-                <LinearLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPelayanan"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:layout_columnWeight="1"
                     android:layout_margin="6dp"
-                    android:background="@drawable/bg_menu_card"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-
-                    <!-- ICON PELAYANAN -->
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:src="@android:drawable/ic_menu_send"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pelayanan"
-                        android:textStyle="bold"
-                        android:textColor="#1F2937"
-                        android:paddingTop="8dp"/>
-                </LinearLayout>
+                    android:text="Pelayanan"
+                    android:textAllCaps="false"
+                    android:textColor="#1F2937"
+                    app:icon="@android:drawable/ic_menu_send"
+                    app:iconGravity="top"
+                    app:iconPadding="8dp"
+                    app:iconSize="32dp"
+                    app:iconTint="#673AB7"
+                    app:cornerRadius="16dp"
+                    app:strokeColor="#E5E7EB"
+                    android:backgroundTint="#FFFFFF"/>
 
             </GridLayout>
 
@@ -174,12 +164,13 @@
             <ListView
                 android:id="@+id/listDokumen"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="400dp"
                 android:divider="@android:color/transparent"
-                android:dividerHeight="10dp"/>
+                android:dividerHeight="10dp"
+                android:nestedScrollingEnabled="true"/>
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

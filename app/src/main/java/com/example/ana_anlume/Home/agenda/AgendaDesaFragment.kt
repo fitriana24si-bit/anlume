@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ana_anlume.Data.AppDatabase
 import com.example.ana_anlume.Home.agenda.notification.ReminderScheduler
@@ -70,17 +71,25 @@ class AgendaDesaFragment : Fragment() {
         adapter = AgendaDesaAdapter(
             emptyList(),
             { agenda ->
-                lifecycleScope.launch {
-                    try {
-                        db.agendaDesaDao().delete(agenda)
-                        ReminderScheduler.cancelReminder(requireContext(), agenda.namaKegiatan)
-                        Toast.makeText(requireContext(), "Agenda dihapus", Toast.LENGTH_SHORT).show()
-                        loadDataAgenda()
-                    } catch (e: Exception) {
-                        Log.e(TAG, "Delete error", e)
-                        Toast.makeText(requireContext(), "Gagal hapus", Toast.LENGTH_SHORT).show()
+                // Menambahkan konfirmasi AlertDialog sebelum menghapus
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Hapus Agenda")
+                    .setMessage("Apakah Anda yakin ingin menghapus agenda '${agenda.namaKegiatan}'?")
+                    .setPositiveButton("Hapus") { _, _ ->
+                        lifecycleScope.launch {
+                            try {
+                                db.agendaDesaDao().delete(agenda)
+                                ReminderScheduler.cancelReminder(requireContext(), agenda.namaKegiatan)
+                                Toast.makeText(requireContext(), "Agenda dihapus", Toast.LENGTH_SHORT).show()
+                                loadDataAgenda()
+                            } catch (e: Exception) {
+                                Log.e(TAG, "Delete error", e)
+                                Toast.makeText(requireContext(), "Gagal hapus", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
-                }
+                    .setNegativeButton("Batal", null)
+                    .show()
             },
             { agenda ->
                 if (isAdded) showEditDialog(agenda)
@@ -89,6 +98,8 @@ class AgendaDesaFragment : Fragment() {
 
         binding.rvAgendaDesa.apply {
             layoutManager = LinearLayoutManager(requireContext())
+            // Menambahkan garis pemisah (Divider) antar item
+            addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
             adapter = this@AgendaDesaFragment.adapter
         }
     }

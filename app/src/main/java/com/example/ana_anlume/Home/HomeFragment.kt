@@ -10,17 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ana_anlume.R
+import com.example.ana_anlume.BaseActivity
 import com.example.ana_anlume.Home.pertemuan_3.LoginActivity
 import com.example.ana_anlume.Home.pertemuan_4.BangunRuangActivity
 import com.example.ana_anlume.Home.pertemuan_4.Custom1Activity
 import com.example.ana_anlume.Home.pertemuan_4.Custom2Activity
 import com.example.ana_anlume.Home.pertemuan_6.WebViewActivity
-import com.example.ana_anlume.Home.pertemuan_9.NinthActivity
+import com.example.ana_anlume.Home.dokumen.DokumenActivity
+import com.example.ana_anlume.Home.pertemuan_10.TenthActivity
 import com.example.ana_anlume.Data.Api.PostApiClient
 import com.example.ana_anlume.Data.Model.PostModel
 import com.example.ana_anlume.Home.berita.PostAdapter
 import com.example.ana_anlume.Home.berita.PhotoAdapter
 import androidx.appcompat.app.AlertDialog
+import com.example.ana_anlume.Home.pertemuan_13.ThirteenthActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,7 +44,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // --- SLIDER FOTO (URL Baru yang lebih stabil) ---
+        // --- SLIDER FOTO ---
         val vpSlider = view.findViewById<ViewPager2>(R.id.vpSlider)
         val listFotoUrl = listOf(
             "https://picsum.photos/id/10/800/400",
@@ -58,7 +61,6 @@ class HomeFragment : Fragment() {
         rvBerita.adapter = postAdapter
 
         fetchBerita()
-
         setupActions(view)
     }
 
@@ -69,6 +71,8 @@ class HomeFragment : Fragment() {
         val btnWeb = view.findViewById<Button>(R.id.btnWeb)
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
         val btnDokumen = view.findViewById<Button>(R.id.btnDokumen)
+        val btnTenth = view.findViewById<Button>(R.id.btnTenth)
+        val btnThirteenth = view.findViewById<Button>(R.id.btnThirteenth)
 
         btn1?.setOnClickListener {
             startActivity(Intent(requireContext(), BangunRuangActivity::class.java))
@@ -87,7 +91,18 @@ class HomeFragment : Fragment() {
         }
 
         btnDokumen?.setOnClickListener {
-            startActivity(Intent(requireContext(), NinthActivity::class.java))
+            // Membuka DokumenActivity (activity_dokumen.xml)
+            startActivity(Intent(requireContext(), DokumenActivity::class.java))
+        }
+
+        btnTenth?.setOnClickListener {
+            // Membuka TenthActivity (Pertemuan 10)
+            startActivity(Intent(requireContext(), TenthActivity::class.java))
+        }
+        btnThirteenth.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), ThirteenthActivity::class.java)
+            )
         }
 
         btnLogout?.setOnClickListener {
